@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Job Description</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            /* padding: 0; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* background-color: #f8f9fa;  */
+            /* font-family: Arial, sans-serif; */
+            background-color: #c8c0bd;
+            padding: 20px;
+        }
+
+        .content {
+            /* max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+            background-color: #fff; /* Match background color with popup */
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(33, 33, 33, 0.5);
+            max-width: 800px;
+            width: 100%;
+            text-align: left;
+            animation: fade 1s ease;
+            margin: 0 auto; /* Center the form horizontally */
+            margin-top: 50px;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: #333333; /* Dark gray text color */
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            margin-bottom: 30px;
+            color: #750550
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #1c1c1c; /* Medium gray text color */
+            margin-bottom: 15px;
+        }
+
+        .button-container {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .button-container button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            background-color: #750550; /* Blue button */
+            color: #ffffff; /* White text color */
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .button-container button:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+
+        .response_points{
+            font-size: 20px;
+            color: #9e0606
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div class="content">
+            <h1>Generated Job Description:</h1>
+            {% for point in response_points %}
+            <p>{{ point }}</p>
+            {% endfor %}
+        
+        <!-- Rest of the job attributes -->
+            <div class="button-container">
+                <button onclick="copyText()">Copy Text</button>
+                <button onclick="shareToLinkedIn()">Share to LinkedIn</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyText() {
+            var text = document.querySelector('.content').innerText;
+            navigator.clipboard.writeText(text)
+            .then(() => alert('Text copied to clipboard'))
+            .catch(err => console.error('Could not copy text: ', err));
+        }
+
+        
+
+        function shareToLinkedIn() {
+            var url = window.location.href;
+            var title = document.title;
+            var linkedinUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`;
+            window.open(linkedinUrl, '_blank');
+        }
+    </script>
+
+    <!-- Add this script tag inside the <body> element of your HTML -->
+
+
+</body>
+</html>
